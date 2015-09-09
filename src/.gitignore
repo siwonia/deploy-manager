@@ -1,0 +1,4 @@
+*.DS_Store
+Pods/Pods.xcodeproj/xcuserdata/
+deploy-manager.xcodeproj/project.xcworkspace/xcuserdata/
+deploy-manager.xcworkspace/xcuserdata/

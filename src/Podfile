@@ -1,0 +1,3 @@
+platform :osx, '10.10'
+use_frameworks!
+pod 'Async', :git => 'https://github.com/duemunk/Async.git'

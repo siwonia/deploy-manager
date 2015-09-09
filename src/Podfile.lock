@@ -1,0 +1,19 @@
+PODS:
+  - Async (1.2.0)
+
+DEPENDENCIES:
+  - Async (from `https://github.com/duemunk/Async.git`)
+
+EXTERNAL SOURCES:
+  Async:
+    :git: https://github.com/duemunk/Async.git
+
+CHECKOUT OPTIONS:
+  Async:
+    :commit: ceb4051b248787cc860dd0e7169b1386e29345cf
+    :git: https://github.com/duemunk/Async.git
+
+SPEC CHECKSUMS:
+  Async: aba7b48a4cd05dae27d1affce2f48f2ed61e75f9
+
+COCOAPODS: 0.37.0.beta.1
