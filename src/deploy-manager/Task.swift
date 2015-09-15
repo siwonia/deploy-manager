@@ -24,7 +24,8 @@ func startTasks(task: String) {
     Async
         .main {
             
-            // scroll console to top
+            // log empty line and scroll console to top
+            logLine("")
             delegate.console.scrollRangeToVisible(NSMakeRange(0, 0))
             
         }.main { if (kill) { return }
@@ -70,21 +71,6 @@ func startTasks(task: String) {
             
         }.main { if (kill) { return }
             
-            // get unpushed commit
-            let commitInBranch = runPathBashs([
-                "git log \(currentBranch) --not --remotes " +
-                "--simplify-by-decoration --oneline"
-            ]);
-            
-            // check, if there are no commits
-            if (commitInBranch == "") {
-                log(true, "Current branch '\(currentBranch)' has no unpushed commits")
-            } else {
-                log(false, "Current branch '\(currentBranch)' does already have a unpushed commit")
-                kill = true
-            }
-        }.main { if (kill) { return }
-            
             // get all branches in repository
             branches = getBranches()
             
@@ -100,13 +86,13 @@ func startTasks(task: String) {
             dateFormatter.dateFormat = BACKUP_DATE_FORMAT
             backupBranch = BACKUP_NAME + dateFormatter.stringFromDate(NSDate())
             
-            // check branch name already exists
+            // check if backup branch name already exists
             if (isPathBashTrue("git show-ref --verify --quiet \"\(REFS_HEADS + backupBranch)\"")) {
                 log(false, "A branch named '\(backupBranch)' already exists")
                 kill = true
             } else {
                 log(true, "Backup branch name is valid")
-                branches.append(backupBranch);
+                branches.append(backupBranch)
             }
         }.main { if (kill) { return }
             
@@ -149,7 +135,7 @@ func startTasks(task: String) {
             }
         }.main { if (kill) { return }
 
-            // cherry pick from backup
+            // cherry pick last changes from backup without a commit
             runPathBashs(["git cherry-pick -n \(backupBranch)"])
             log(true, "Cherry picked last changes from '\(backupBranch)'")
             

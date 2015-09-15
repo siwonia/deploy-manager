@@ -12,9 +12,15 @@ import Foundation
 func log(isValid: Bool, text: String) {
 
     // define log icon
-    let logIcon = isValid ? "✓" : "✗";
+    let logIcon = isValid ? "✓" : "✗"
 
+    logLine("\(logIcon) \(text)")
+}
+
+// log text to console
+func logLine(text: String) {
+    
     // write output into text view
     let console = delegate.console.textStorage
-    console!.mutableString.setString("\(logIcon) \(text)\n\(console!.string)")
+    console!.mutableString.setString("\(text)\n\(console!.string)")
 }
