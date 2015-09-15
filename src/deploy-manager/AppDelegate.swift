@@ -59,5 +59,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     @IBAction func deployButton(sender: AnyObject) {
         startTasks("deploy")
     }
+    
+    // open github page
+    @IBAction func openHelpUrl(sender: AnyObject) {
+        let helpUrl = "https://github.com/schultka/deploy-manager"
+        NSWorkspace.sharedWorkspace().openURL(NSURL(string: helpUrl)!)
+    }
 }
 
